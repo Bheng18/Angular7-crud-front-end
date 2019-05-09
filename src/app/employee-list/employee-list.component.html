@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>List of Employees</h3>
+    <mat-grid-list cols="4" rowHeight="30px">
+        <mat-grid-tile>Name</mat-grid-tile>
+        <mat-grid-tile>Contact</mat-grid-tile>
+        <mat-grid-tile>Email</mat-grid-tile>
+        <mat-grid-tile>Address</mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-list role="list" *ngFor="let folder of folders">
+        <mat-list-item role="listitem">
+            <h5 MatLine>{{folder.name}}</h5>
+            <p MatLine>{{folder.updated | date}}</p>
+            <button mat-raised-button color="accent">Edit</button>
+            <mat-icon>more_vert</mat-icon>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+    <!-- <mat-card *ngFor="let folder of folders">
+        <mat-card-content><p mat-line>{{folder.name}}</p></mat-card-content>
+        <mat-card-content><p mat-line> {{folder.updated | date}} </p></mat-card-content> -->
+        <!-- <mat-divider></mat-divider> -->
+    <!-- </mat-card> -->
+
+    <div class="example-button-row">
+      <button mat-raised-button>Basic</button>
+      <button mat-raised-button color="primary">Primary</button>
+      <button mat-raised-button color="warn">Warn</button>
+      <button mat-raised-button disabled>Disabled</button>
+      <a mat-raised-button routerLink=".">Link</a>
+    </div>
+</div>
+

@@ -2,15 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { EmployeeAddChildComponent } from './employee-add/employee-add-child/employee-add-child.component';
+import { EmployeeService } from './shared/employee.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmployeeListComponent,
+    EmployeeAddComponent,
+    EmployeeAddChildComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ReactiveFormsModule
+    // MatButtonModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

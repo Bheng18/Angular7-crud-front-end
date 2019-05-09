@@ -1,0 +1,24 @@
+/* .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+} */
+.contain{
+    /* top right bottom left */
+  padding-left: 20px; 
+  width: 97%;
+  height: 600px;
+}
+.navbar{
+  justify-content: space-between;
+}
+span{
+  padding-right: 1rem;
+}
+
+.footer{
+  margin-top: 100px;
+  justify-content: center;
+  /* width: 97%; */
+  /* top right bottom left */
+  /* padding: 0px 0px 0px 20px;  */
+}

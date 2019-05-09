@@ -1,0 +1,22 @@
+/* .container{
+    justify-content: center;
+    /* top right bottom left 
+    padding: 0px 0px 0px 20px; 
+    background-color: aquamarine;
+    height: 460px;
+  } */
+  /* .navbar{
+    justify-content: space-between;
+  } */
+  /* span{
+    padding-right: 1rem;
+  } */
+  mat-grid-tile{
+    background-color: aquamarine;
+  }
+  /* mat-list-item{
+    display: 1;
+    justify-content: flex-end /* for right*/
+    /* justify-content: flex-start for left
+    justify-content: centre for center
+} */

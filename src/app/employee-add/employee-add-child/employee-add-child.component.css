@@ -1,0 +1,47 @@
+/* .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+   */
+form.normal-from{
+    margin: 10px;
+}
+
+.controles-container{
+    width: 100%;
+    padding: 5%;
+}
+.controles-container > *{
+    width: 100%;
+}
+
+.controles2-container{
+    margin-top: 45px;
+    width: 100%;
+    padding: 5%;
+}
+.controles2-container > *{
+    width: 100%;
+}
+
+/* .add-bottom-padding{
+    margin-top: 65px;
+    margin-left: 10px;
+} */
+
+mat-radio-group mat-radio-button{
+    padding-left: 10px;
+}
+
+/* .addCheckbox-bottom-padding{
+    margin-left: -105px;
+    padding-bottom: 20px;
+} */
+
+.btn-row button{
+    margin: 5px;
+}
