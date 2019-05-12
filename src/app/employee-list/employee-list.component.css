@@ -11,12 +11,44 @@
   /* span{
     padding-right: 1rem;
   } */
-  mat-grid-tile{
+  /* mat-grid-tile{
     background-color: aquamarine;
-  }
+  } */
   /* mat-list-item{
     display: 1;
     justify-content: flex-end /* for right*/
     /* justify-content: flex-start for left
     justify-content: centre for center
 } */
+table {
+  width: 100%;
+}
+
+/* .hide{
+  display: none;
+} */
+
+/* .loadingText{
+  justify-content: center;
+  font-style: italic;
+} */
+
+.example-second-footer-row td {
+  color: #900000;
+  text-align: center;
+}
+
+.search-div {
+  font-size: 14px;
+  /* width: 100%; */
+  margin-right: 10px;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 92%;
+}
+
+td, th {
+  width: 20%;
+}
+

@@ -8,7 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeAddChildComponent } from './employee-add/employee-add-child/employee-add-child.component';
 import { EmployeeService } from './shared/employee.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,11 +17,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     EmployeeAddComponent,
     EmployeeAddChildComponent
   ],
+  entryComponents: [EmployeeAddChildComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     // MatButtonModule
   ],
   providers: [EmployeeService],
