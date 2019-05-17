@@ -1,0 +1,9 @@
+<div>
+  <h2 mat-dialog-title>Delete</h2>
+  <mat-dialog-content>Are you sure to delete <b>{{data.fullName}}</b> ?</mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>No</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button [mat-dialog-close]="true" (click)="deleteEmployee(data.id)">Yes</button>
+  </mat-dialog-actions>
+</div>

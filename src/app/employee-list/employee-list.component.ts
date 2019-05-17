@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PeriodicElement } from './sectionSchema';
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { EmployeeAddChildComponent } from '../employee-add/employee-add-child/employee-add-child.component';
+import { EmployeeService } from '../shared/employee.service';
+import { ConfirmDialogService } from '../shared/confirm-dialog.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,45 +13,42 @@ import { EmployeeAddChildComponent } from '../employee-add/employee-add-child/em
 
 export class EmployeeListComponent implements OnInit {
 
- ELEMENT_DATA: PeriodicElement[] = [
-  {fullname: 'Joebert', email: 'Hydrogen@yahoo.com', mobile: 9176932537, city: 'Mandaluyong', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Bheng', email: 'Helium@gmail.com', mobile: 9176932537, city: 'Makati', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Ben', email: 'Lithium@gmail.com', mobile: 9176932537, city: 'Pasay', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Joe', email: 'Beryllium@gmail.com', mobile: 9176932537, city: 'Pasig', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'CJ', email: 'Boron@gmail.com', mobile: 9176932537, city: 'San Juan', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Cyben', email: 'Carbon@gmail.com', mobile: 9176932537, city: 'Maynila', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Faith', email: 'Nitrogen@gmail.com', mobile: 9176932537, city: 'Rizal', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Lala', email: 'Oxygen@gmail.com', mobile: 9176932537, city: 'Quezon', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Cristela', email: 'Fluorine@gmail.com', mobile: 9176932537, city: 'caloocan', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Jennifer', email: 'Neon@gmail.com', mobile: 9176932537, city: 'Valenzuela', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Joebert', email: 'Hydrogen@yahoo.com', mobile: 9176932537, city: 'Mandaluyong', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Bheng', email: 'Helium@gmail.com', mobile: 9176932537, city: 'Makati', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Ben', email: 'Lithium@gmail.com', mobile: 9176932537, city: 'Pasay', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Joe', email: 'Beryllium@gmail.com', mobile: 9176932537, city: 'Pasig', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'CJ', email: 'Boron@gmail.com', mobile: 9176932537, city: 'San Juan', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Cyben', email: 'Carbon@gmail.com', mobile: 9176932537, city: 'Maynila', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Faith', email: 'Nitrogen@gmail.com', mobile: 9176932537, city: 'Rizal', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Lala', email: 'Oxygen@gmail.com', mobile: 9176932537, city: 'Quezon', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Cristela', email: 'Fluorine@gmail.com', mobile: 9176932537, city: 'caloocan', department: new Date('1/17/16'), actions: 'actions'},
-  {fullname: 'Jennifer', email: 'Neon@gmail.com', mobile: 9176932537, city: 'Valenzuela', department: new Date('1/17/16'), actions: 'actions'}
-];
+  constructor(public dialog: MatDialog, 
+              private service: EmployeeService, 
+              public dialogService: ConfirmDialogService
+              ) {  }
+  // ELEMENT_DATA = [
+  // //  this.service.getEmployee();   
+  // ];
+  listData: MatTableDataSource<PeriodicElement>;
 
-displayedColumns: string[] = ['fullname', 'email', 'mobile', 'city', 'department', 'actions']; //, 'action'
-dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);;
+displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department', 'hireDate', 'actions']; //, 'action'
+// dataSource = new MatTableDataSource(this.listData); //this.ELEMENT_DATA
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 searchKey: string;
 
-  constructor(public dialog: MatDialog) {  }
+getEmployeeFromServiceAndConvertData(){
+  this.service.getEmployee().subscribe(data => { 
+    let array = data.map(item => {
+      return {
+        ...item
+      };
+    })
+    this.listData = new MatTableDataSource(array);
+    this.listData.paginator = this.paginator;
+    this.listData.sort = this.sort;
+  });
+}
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.getEmployeeFromServiceAndConvertData();
   }
+
   applyFilter(searchKey: string){
      console.log(searchKey);
-     this.dataSource.filter = searchKey.trim().toLowerCase();
+     this.listData.filter = searchKey.trim().toLowerCase();
   }
 
   onSearchKeyClear(){
@@ -57,17 +56,42 @@ searchKey: string;
   }
 
   openDialog(){
+    this.service.initializeFormGroup();
     const dialogRef = this.dialog.open(EmployeeAddChildComponent, {
-       width: '800px'
+       width: '800px',
+       autoFocus: false
     });
     dialogRef.afterClosed().subscribe(result => {
        console.log(`Result: ${result}`);
+    this.getEmployeeFromServiceAndConvertData();
     });
   }
 
-  delete(element){
-    console.log(element.fullname);
+  edit(element){
+    // console.log('from list', element);
+    this.service.populateForm(element);
+    const dialogRef = this.dialog.open(EmployeeAddChildComponent, {
+      width: '800px',
+      autoFocus: false
+   });
+   dialogRef.afterClosed().subscribe(result => {
+      console.log(`Result: ${result}`);
+      this.getEmployeeFromServiceAndConvertData();
+   });
   }
 
+  delete(element){
+    this.dialogService.openConfirmDialog(element);
+  }
+
+  // editIssue(id) {
+  //   this.router.navigate([`/edit/${id}`]);
+  // }
+
+  // deleteIssue(id) {
+  //   this.issueService.deleteIssue(id).subscribe(() => {
+  //     this.fetchIssues();
+  //   });
+  // }
 
 }

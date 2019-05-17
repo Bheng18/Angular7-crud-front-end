@@ -9,24 +9,29 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeAddChildComponent } from './employee-add/employee-add-child/employee-add-child.component';
 import { EmployeeService } from './shared/employee.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { DialogComponent } from './confirm/dialog/dialog.component';
+import { ConfirmDialogService } from './shared/confirm-dialog.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     EmployeeAddComponent,
-    EmployeeAddChildComponent
+    EmployeeAddChildComponent,
+    DialogComponent
   ],
-  entryComponents: [EmployeeAddChildComponent],
+  entryComponents: [EmployeeAddChildComponent, DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
-    // MatButtonModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, DatePipe, ConfirmDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

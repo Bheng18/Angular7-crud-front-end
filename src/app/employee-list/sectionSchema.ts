@@ -1,13 +1,11 @@
   export interface PeriodicElement {
-    fullname: string;
+    // empId: number;
+    fullName: string;
     email: string;
     mobile: number;
     city: string;
-    department: Date;
-    actions: string;
-    // name: string;
-    // position: number;
-    // weight: number;
-    // symbol: string;
-    // updated: Date;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
   }

@@ -1,12 +1,22 @@
    
 <!-- <div class="example-container"> -->
-    <h2 mat-dialog-title>Add Employee</h2>
+    <!-- <h2 mat-dialog-title>Add Employee</h2>  -->
+    <mat-toolbar>
+         <span>{{service.form.controls['empId'].value ? 'Modify Employee' : 'Add Employee'}}</span>
+         <span class="fill-remaining-space"></span>
+         <button class="btn-dialog-close" mat-stroke-button (click)="onClose()" tabindex="-1" >
+            <mat-icon>clear</mat-icon>
+          </button>
+    </mat-toolbar>
+    <!-- <button mat-button *ngIf="searchKey" matSuffix mat-icon-button aria-label="Clear" (click)="onSearchKeyClear()">
+      <mat-icon>close</mat-icon>
+    </button> -->
     <mat-dialog-content>
   <form [formGroup]="service.form" class="normal-form">
       <mat-grid-list cols="2" rowHeight="300px">
           <mat-grid-tile>
               <div class="controles-container">
-                  <input type="hidden" formControlName="key$">
+                  <input type="hidden" formControlName="empId">
                   <mat-form-field>
                       <input formControlName="fullName" matInput placeholder="Full Name*">
                       <mat-error>This field is mandatory.</mat-error>
@@ -55,12 +65,11 @@
                             <mat-checkbox formControlName="isPermanent" >Permanent Employee</mat-checkbox>
                       </div>
                   <div class="btn-row">
-                        <!-- <button mat-raised-button color="accent" type="submit" [disabled]="service.form.invalid">Submit</button>
-                        <button mat-button (click)="onClear()">Clear</button> -->
-                       <mat-dialog-actions>
-                          <button mat-button mat-dialog-close="false">No</button>
-                          <button mat-button [mat-dialog-close]="true">Yes</button>
+                       <mat-dialog-actions align="end">
+                          <button mat-raised-button (click)="onClear()">Clear</button>
+                          <button type="submit" [disabled]="service.form.invalid" mat-raised-button color="accent" [mat-dialog-close]="true" (click)="onSubmit()" cdkFocusInitial>Submit</button>
                         </mat-dialog-actions>
+                        <!--         | -->
                   </div>
               </div>
           </mat-grid-tile>

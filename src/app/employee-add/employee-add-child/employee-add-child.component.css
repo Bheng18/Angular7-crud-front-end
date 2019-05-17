@@ -45,3 +45,10 @@ mat-radio-group mat-radio-button{
 .btn-row button{
     margin: 5px;
 }
+
+.fill-remaining-space{
+    /* this fill the remaining space, by using flexbox.
+     every toolbar row uses a flexbox. */
+     flex: 1 1 auto;
+}
+
