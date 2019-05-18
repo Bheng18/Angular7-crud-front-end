@@ -20,7 +20,7 @@ export class DialogComponent implements OnInit {
   deleteEmployee(id){
     this._service.deleteEmployee(id).subscribe(() => {
       //  console.log(res);
-       this._service.getEmployee();
+       this._service.getEmployee().subscribe();
        this._notifService.success(':: Deleted Successfully. . .');
     });
   }

@@ -4,6 +4,7 @@ import {MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/ma
 import { EmployeeAddChildComponent } from '../employee-add/employee-add-child/employee-add-child.component';
 import { EmployeeService } from '../shared/employee.service';
 import { ConfirmDialogService } from '../shared/confirm-dialog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,9 +14,12 @@ import { ConfirmDialogService } from '../shared/confirm-dialog.service';
 
 export class EmployeeListComponent implements OnInit {
 
+  element: any;
+
   constructor(public dialog: MatDialog, 
               private service: EmployeeService, 
-              public dialogService: ConfirmDialogService
+              public dialogService: ConfirmDialogService,
+              public _router: Router
               ) {  }
   // ELEMENT_DATA = [
   // //  this.service.getEmployee();   
@@ -78,6 +82,10 @@ getEmployeeFromServiceAndConvertData(){
       console.log(`Result: ${result}`);
       this.getEmployeeFromServiceAndConvertData();
    });
+  }
+
+  details(element){
+    this._router.navigate([`/employeeDetails/${element.empId}`]);    
   }
 
   delete(element){

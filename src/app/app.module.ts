@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { DialogComponent } from './confirm/dialog/dialog.component';
 import { ConfirmDialogService } from './shared/confirm-dialog.service';
+// import { EmpployeedetailsComponent } from './employee-list/empployeedetails/empployeedetails.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ConfirmDialogService } from './shared/confirm-dialog.service';
     EmployeeListComponent,
     EmployeeAddComponent,
     EmployeeAddChildComponent,
-    DialogComponent
+    DialogComponent,
+    routingComponents // EmpployeedetailsComponent
   ],
   entryComponents: [EmployeeAddChildComponent, DialogComponent],
   imports: [
@@ -29,7 +32,8 @@ import { ConfirmDialogService } from './shared/confirm-dialog.service';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [EmployeeService, DatePipe, ConfirmDialogService],
   bootstrap: [AppComponent]

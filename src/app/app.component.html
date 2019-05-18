@@ -8,9 +8,9 @@
            <a mat-list-item href="#">About</a>
            <a mat-list-item href="#" [matMenuTriggerFor]="menu">Services</a>
         </mat-nav-list> -->
-        <span>Home</span>
-        <span>About</span>
-        <span><a href="#" mat-button [matMenuTriggerFor]="menu">Service</a></span>
+        <a routerLink="/">Home</a>
+        <a routerLinkActive="/about">About</a>
+        <a href="#" mat-button [matMenuTriggerFor]="menu">Service</a>
       </div>
     </mat-toolbar>
 
@@ -22,7 +22,8 @@
 
     <!-- <div style="text-align:center"> -->
       <!-- <h1>Welcome to {{ title }}!</h1>  -->
-      <app-employee-list></app-employee-list>
+      <router-outlet></router-outlet>
+      <!-- <app-employee-list></app-employee-list> -->
       <!-- <app-employee-add></app-employee-add> -->
     <!-- </div> -->
     <div class="footer">

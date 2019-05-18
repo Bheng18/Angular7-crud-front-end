@@ -11,8 +11,10 @@
 .navbar{
   justify-content: space-between;
 }
-span{
+a{
   padding-right: 1rem;
+  text-decoration: none;
+  color: white;
 }
 
 .footer{

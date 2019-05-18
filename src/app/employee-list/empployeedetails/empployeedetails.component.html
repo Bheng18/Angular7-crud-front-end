@@ -1,0 +1,14 @@
+<!-- <p>
+  empployeedetails works! {{empId}}
+</p> -->
+<div>
+   <div *ngFor="let data of empData">
+      <li>{{data.fullName}}</li>
+      <li>{{data.mobile}}</li>
+      <li>{{data.city}}</li>
+      <li>{{data.email}}</li>
+      <li>{{data.gender}}</li>
+    </div>
+  <button mat-raised-button (click)="goPrevious()">Previous ID</button>
+  <button mat-raised-button color="primary" (click)="goNext()">Next ID</button>
+</div>

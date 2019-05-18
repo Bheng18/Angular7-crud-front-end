@@ -16,7 +16,7 @@ openConfirmDialog(element){
      data: {
        id: element.empId,
        fullName: element.fullName
-     }
+     }  
   });
 }
 

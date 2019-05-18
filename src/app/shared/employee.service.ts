@@ -32,9 +32,9 @@ private _url = "http://localhost:3000";
     return this.http.get<PeriodicElement[]>(this._url);
   }
 
-  // getEmployeeById(id): Observable<PeriodicElement[]>{
-  //   return this.http.get<PeriodicElement[]>(`${this._url}/employee/${id}`);
-  // }
+  getEmployeeById(id): Observable<PeriodicElement[]>{
+    return this.http.get<PeriodicElement[]>(`${this._url}/employee/${id}`);
+  }
 
   addEmployee(employeeFormValue: any){
     this.http.post<any>(`${this._url}/add`, employeeFormValue).subscribe(()=>{
@@ -45,7 +45,7 @@ private _url = "http://localhost:3000";
   //for update
   updateEmployee(updateFormValue){
     this.http.put<any>(`${this._url}/update/${updateFormValue.empId}`, updateFormValue).subscribe(()=>{
-       this.getEmployee();
+      //  this.getEmployee();
     });
   }
 
@@ -71,7 +71,7 @@ private _url = "http://localhost:3000";
   }
 
   deleteEmployee(id){
-    console.log('Service Console', id);
+    // console.log('Service Console', id);
     return this.http.delete<any>(`${this._url}/delete/${id}`);
   }
 
