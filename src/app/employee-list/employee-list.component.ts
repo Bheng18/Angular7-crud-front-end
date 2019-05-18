@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class EmployeeListComponent implements OnInit {
 
   element: any;
+  public disabled;
 
   constructor(public dialog: MatDialog, 
               private service: EmployeeService, 
@@ -74,10 +75,11 @@ getEmployeeFromServiceAndConvertData(){
   edit(element){
     // console.log('from list', element);
     this.service.populateForm(element);
+    this.disabled = false;
     const dialogRef = this.dialog.open(EmployeeAddChildComponent, {
       width: '800px',
-      autoFocus: false
-   });
+      autoFocus: false,
+    });
    dialogRef.afterClosed().subscribe(result => {
       console.log(`Result: ${result}`);
       this.getEmployeeFromServiceAndConvertData();

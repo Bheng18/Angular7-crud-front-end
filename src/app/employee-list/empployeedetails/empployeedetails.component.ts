@@ -11,7 +11,7 @@ export class EmpployeedetailsComponent implements OnInit {
 
   public empId;
   public empData;
-  // public employeeData;
+
   constructor(private _activateRoute: ActivatedRoute, private _router: Router, private _empService: EmployeeService) { }
 
   ngOnInit() {
