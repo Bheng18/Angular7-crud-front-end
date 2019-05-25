@@ -73,7 +73,7 @@ getEmployeeFromServiceAndConvertData(){
   }
 
   edit(element){
-    // console.log('from list', element);
+    console.log('from list', element);
     this.service.populateForm(element);
     this.disabled = false;
     const dialogRef = this.dialog.open(EmployeeAddChildComponent, {

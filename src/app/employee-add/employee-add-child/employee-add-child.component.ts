@@ -34,7 +34,7 @@ export class EmployeeAddChildComponent implements OnInit {
 
   onSubmit(){
     let formValue = this.service.form.value;
-        formValue.hireDate = this.datePipe.transform(formValue.hireDate, 'MM/dd/yyyy');
+        formValue.hireDate = this.datePipe.transform(formValue.hireDate, 'yyyy-MM-dd');
     if(formValue.empId != null){
       this.service.updateEmployee(formValue);
       this.service.form.reset();

@@ -61,10 +61,12 @@
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
+
                       <div class="addCheckbox-bottom-padding">
-                            <mat-checkbox formControlName="isPermanent" >Permanent Employee</mat-checkbox>
+                            <mat-checkbox formControlName="permanent" >Permanent Employee</mat-checkbox>
                       </div>
-                  <div class="btn-row">
+                  
+                      <div class="btn-row">
                        <mat-dialog-actions align="end">
                           <button mat-raised-button (click)="onClear()">Clear</button>
                           <button type="submit" [disabled]="service.form.controls['empId'].value ? service.form.valid : service.form.invalid" mat-raised-button color="accent" [mat-dialog-close]="true" (click)="onSubmit()" cdkFocusInitial>Submit</button>

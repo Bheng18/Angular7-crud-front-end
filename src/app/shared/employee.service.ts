@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as _ from 'lodash';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; //, Response, Headers, RequestOptions
 import { PeriodicElement } from '../employee-list/sectionSchema';
 import { Observable } from 'rxjs';
 
@@ -9,12 +9,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeService {
-
 // private _url: string = "/assets/data/employee.json";
-// private _url = "http://127.0.0.1:3000";
-private _url = "http://localhost:3000";
-
+  private _url = "http://localhost:8080/api";
   constructor(private http: HttpClient) { }
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'cache-control': 'no-cache',
+    })
+  }
 
   form: FormGroup = new FormGroup({
     empId: new FormControl(null),
@@ -25,35 +31,37 @@ private _url = "http://localhost:3000";
     gender: new FormControl('1'),
     department: new FormControl(''),
     hireDate:  new FormControl(''),
-    isPermanent: new FormControl(false) 
+    permanent: new FormControl(false) 
   });
 
   getEmployee(): Observable<PeriodicElement[]>{
-    return this.http.get<PeriodicElement[]>(this._url);
+    return this.http.get<PeriodicElement[]>(`${this._url}/employeeList`, this.httpOptions);
   }
 
   getEmployeeById(id): Observable<PeriodicElement[]>{
-    return this.http.get<PeriodicElement[]>(`${this._url}/employee/${id}`);
+    return this.http.get<PeriodicElement[]>(`${this._url}/detailsEmployees/${id}`);
+        // return this.http.get<PeriodicElement[]>(`${this._url}/employee/${id}`); //this
   }
-
-  addEmployee(employeeFormValue: any){
-    this.http.post<any>(`${this._url}/add`, employeeFormValue).subscribe(()=>{
-      // console.log("Done");
-    });
+ 
+  addEmployee(employeeFormValue){
+    // console.log("Data", JSON.stringify(employeeFormValue))
+        // this.http.post<any>(`${this._url}/employee`, employeeFormValue).subscribe(()=>{
+    this.http.post<any>(`${this._url}/addEmployees`, employeeFormValue, this.httpOptions).subscribe((data)=>{ });
   }
 
   //for update
-  updateEmployee(updateFormValue){
-    this.http.put<any>(`${this._url}/update/${updateFormValue.empId}`, updateFormValue).subscribe(()=>{
+  updateEmployee(updateFormValue: any){
+    // this.http.put<any>(`${this._url}/updateEmployees/${updateFormValue.empId}`, updateFormValue).subscribe(()=>{ //gumana to sa nodejs sa springboot hindi
+      this.http.put<any>(`${this._url}/updateEmployees`, updateFormValue).subscribe(()=>{
       //  this.getEmployee();
     });
   }
 
   //for edit form
-  populateForm(employee){
+  populateForm(employee: any){
     console.log('from service', employee);
-    this.form.setValue(_.omit(employee, `${employee.department}`));
-      // this.form.setValue(employee);
+    // this.form.setValue(_.omit(employee, 'department'));
+      this.form.setValue(employee);
   }
 
   initializeFormGroup(){
@@ -66,13 +74,13 @@ private _url = "http://localhost:3000";
       gender: '1',
       department: '',
       hireDate: '',
-      isPermanent: false 
+      permanent: false 
     });
   }
 
-  deleteEmployee(id){
+  deleteEmployee(id:number){
     // console.log('Service Console', id);
-    return this.http.delete<any>(`${this._url}/delete/${id}`);
+    return this.http.delete<any>(`${this._url}/deleteEmployees/${id}`);
   }
 
 }
