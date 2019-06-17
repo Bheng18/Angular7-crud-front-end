@@ -1,0 +1,22 @@
+[
+    {"fullname": "Joebert", "email": "Hydrogen@yahoo.com", "mobile": 9176932537, "city": "Mandaluyong", "department": "Research", "actions": "actions"},
+    {"fullname": "Bheng", "email": "Helium@gmail.com", "mobile": 9176932537, "city": "Makati", "department": "IT", "actions": "actions"},
+    {"fullname": "Ben", "email": "Lithium@gmail.com", "mobile": 9176932537, "city": "Pasay", "department": "Computer Science", "actions": "actions"},
+    {"fullname": "Joe", "email": "Beryllium@gmail.com", "mobile": 9176932537, "city": "Pasig", "department": "Business", "actions": "actions"},
+    {"fullname": "CJ", "email": "Boron@gmail.com", "mobile": 9176932537, "city": "San Juan", "department": "Admin", "actions": "actions"},
+    {"fullname": "Cyben", "email": "Carbon@gmail.com", "mobile": 9176932537, "city": "Maynila", "department": "Accounting", "actions": "actions"},
+    {"fullname": "Faith", "email": "Nitrogen@gmail.com", "mobile": 9176932537, "city": "Maynila", "department": "Finance", "actions": "actions"},
+    {"fullname": "Lala", "email": "Oxygen@gmail.com", "mobile": 9176932537, "city": "Mandaluyong", "department": "Business", "actions": "actions"},
+    {"fullname": "Cristela", "email": "Fluorine@gmail.com", "mobile": 9176932537, "city": "Makati", "department": "Finance", "actions": "actions"},
+    {"fullname": "Jennifer", "email": "Neon@gmail.com", "mobile": 9176932537, "city": "Valenzuela", "department": "Research", "actions": "actions"},
+    {"fullname": "Joebert", "email": "Hydrogen@yahoo.com", "mobile": 9176932537, "city": "Mandaluyong", "department": "Research", "actions": "actions"},
+    {"fullname": "Bheng", "email": "Helium@gmail.com", "mobile": 9176932537, "city": "Makati", "department": "IT", "actions": "actions"},
+    {"fullname": "Ben", "email": "Lithium@gmail.com", "mobile": 9176932537, "city": "Pasay", "department": "Computer Science", "actions": "actions"},
+    {"fullname": "Joe", "email": "Beryllium@gmail.com", "mobile": 9176932537, "city": "Pasig", "department": "Business", "actions": "actions"},
+    {"fullname": "CJ", "email": "Boron@gmail.com", "mobile": 9176932537, "city": "San Juan", "department": "Admin", "actions": "actions"},
+    {"fullname": "Cyben", "email": "Carbon@gmail.com", "mobile": 9176932537, "city": "Maynila", "department": "Accounting", "actions": "actions"},
+    {"fullname": "Faith", "email": "Nitrogen@gmail.com", "mobile": 9176932537, "city": "Maynila", "department": "Finance", "actions": "actions"},
+    {"fullname": "Lala", "email": "Oxygen@gmail.com", "mobile": 9176932537, "city": "Mandaluyong", "department": "Business", "actions": "actions"},
+    {"fullname": "Cristela", "email": "Fluorine@gmail.com", "mobile": 9176932537, "city": "Makati", "department": "Finance", "actions": "actions"},
+    {"fullname": "Jennifer", "email": "Neon@gmail.com", "mobile": 9176932537, "city": "Valenzuela", "department": "Research", "actions": "actions"}
+]
