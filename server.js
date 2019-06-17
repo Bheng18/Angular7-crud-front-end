@@ -7,10 +7,10 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 //serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/angular-crud-app'));
+app.use(express.static(__dirname + '/dist/'));
 
 app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname + '/dist/angular-crud-app/index.html'));
+   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 app.listen(port, console.log('running in port 8080'));
