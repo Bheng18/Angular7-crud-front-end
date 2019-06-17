@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class EmployeeService {
 // private _url: string = "/assets/data/employee.json";
-  private _url = "http://localhost:8080/api";
+  // private _url = "http://localhost:8080/api";
+  private _url = "https://springboot-jf.herokuapp.com/api"; 
   constructor(private http: HttpClient) { }
 
   private httpOptions = {
